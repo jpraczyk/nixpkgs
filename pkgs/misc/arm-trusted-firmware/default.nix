@@ -6,6 +6,7 @@ let
             , platform ? null
             , extraMakeFlags ? []
             , extraMeta ? {}
+            , extraPatches ? []
             , version ? "2.4"
             , ... } @ args:
            stdenv.mkDerivation ({
@@ -19,6 +20,8 @@ let
       rev = "v${version}";
       sha256 = "12k0n79j156bdzqws18kpbli04kn00nh6dy42pjv6gakqrkx9px3";
     };
+
+    patches = [ ] ++ extraPatches;
 
     depsBuildBuild = [ buildPackages.stdenv.cc ];
 
